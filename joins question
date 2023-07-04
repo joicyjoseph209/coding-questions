@@ -47,6 +47,7 @@ inner join products4 as p
 on p.id = o.product_id
 inner join customers3 as c
 on c.id = o.cust_id
-order by total_price desc;
+order by total_price desc
+limit 1;
 
 
