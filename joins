@@ -1,0 +1,52 @@
+CREATE TABLE customers3 (
+  id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE products4 (
+  id INT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  price DECIMAL(10, 2) NOT NULL
+);
+
+CREATE TABLE orders3 (
+  order_id INT PRIMARY KEY,
+  cust_id INT NOT NULL,
+  product_id INT NOT NULL,
+  quantity INT NOT NULL,
+  order_date DATE NOT NULL,
+  FOREIGN KEY (cust_id) REFERENCES customers3(id),
+  FOREIGN KEY (product_id) REFERENCES products4(id)
+);
+
+INSERT INTO customers3 (id, name) VALUES
+(1, 'John Smith'),
+(2, 'Jane Doe'),
+(3, 'Bob Johnson');
+
+INSERT INTO products4 (id, name, price) VALUES
+(1, 'Book', 105),
+(2, 'Pencil', 110),
+(3, 'Notebook', 400),
+(4, 'Pen', 50);
+
+INSERT INTO orders3 (order_id, cust_id, product_id, quantity, order_date) VALUES
+(1, 1, 1, 2, '2022-01-01'),
+(2, 1, 2, 5, '2022-01-02'),
+(3, 2, 3, 10, '2022-01-03'),
+(4, 3, 1, 1, '2022-01-04'),
+(5, 3, 2, 3, '2022-01-05'),
+(6, 3, 2, 2, '2022-01-06');
+
+# Write a query to return the name of the customer who ordered the most expensive product? Choose the correct option..........................................................
+
+select cust_id, c.name, p.name, (quantity * price) as total_price
+from
+orders3 as o
+inner join products4 as p
+on p.id = o.product_id
+inner join customers3 as c
+on c.id = o.cust_id
+order by total_price desc;
+
+
