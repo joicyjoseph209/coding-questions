@@ -1,0 +1,44 @@
+CREATE TABLE course3 (
+  course_id INT PRIMARY KEY,
+  course_name VARCHAR(20)
+);
+
+INSERT INTO course3 (course_id, course_name)
+VALUES 
+    (1, 'Maths'),
+    (2, 'Science'),
+    (3, 'English'),
+    (4, 'History'),
+    (5,'Computer');
+
+    
+CREATE TABLE student_course_fact (
+  student_id INT PRIMARY KEY,
+  student_name VARCHAR(50),
+  course_id INT,
+  FOREIGN KEY (course_id) REFERENCES course(course_id)
+);
+
+
+INSERT INTO student_course_fact (student_id, student_name, course_id)
+VALUES 
+    (1, 'John',2),
+    (2, 'Maria',1),
+    (3, 'Emma',2),
+    (4, 'James',4),
+    (5, 'Fang',5),
+    (6, 'Chad',2),
+    (7, 'Manish',5),
+    (8, 'Gopal',4);
+
+
+# Write a query to analyze the course ID which is not opted for by any student. 
+You can query all the course IDs opted by students and then analyze which one is absent from them--------------------------------------------------------------------------
+
+select course_id, course_name
+from course3
+where course_id NOT IN (select distinct course_id
+from student_course_fact);
+	
+
+
