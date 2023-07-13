@@ -1,0 +1,17 @@
+#Data
+
+CREATE TABLE complaints1 (
+  complaint_id INT NOT NULL AUTO_INCREMENT,
+  complaint_datetime DATETIME NOT NULL,
+  complaint_type VARCHAR(50) NOT NULL,
+  PRIMARY KEY (complaint_id)
+);
+
+INSERT INTO complaints1 (complaint_datetime, complaint_type)
+VALUES ('2022-03-10 10:30:00', 'Delivery issue'),
+       ('2021-03-11 11:45:00', 'Product quality'),
+       ('2022-05-12 12:30:00', 'Payment issue'),
+       ('2022-08-14 13:15:00', 'Customer service');
+
+
+# Write a query to find the number of months passed from 'Product Quality' and 'Customer Service' complaint types? Use month() function.
