@@ -1,0 +1,19 @@
+#Data
+
+CREATE TABLE flight_book_details (
+  flight_id INT NOT NULL,
+  flight_date DATE NOT NULL,
+  flight_book_date DATE NOT NULL,
+  PRIMARY KEY (flight_id, flight_date)
+);
+
+INSERT INTO flight_book_details (flight_id, flight_date, flight_book_date)
+VALUES 
+  (1, '2022-04-10', '2022-03-09'),
+  (2, '2022-05-11', '2022-03-10'),
+  (3, '2022-03-12', '2022-03-11'),
+  (4, '2022-07-13', '2022-03-12'),
+  (5, '2022-03-20', '2022-03-13');
+
+Q. Write a query to get the flight id having the maximum difference between its book date and the actual flight date.
+
