@@ -1,0 +1,19 @@
+#Data
+
+CREATE TABLE loan_details (
+  loan_id INT NOT NULL AUTO_INCREMENT,
+  loan_start_date DATE NOT NULL,
+  loan_type VARCHAR(50) NOT NULL,
+  PRIMARY KEY (loan_id)
+);
+INSERT INTO loan_details (loan_start_date, loan_type)
+VALUES 
+  ('2022-01-01', 'Personal Loan'),
+  ('2022-02-15', 'Home Loan'),
+  ('2022-03-05', 'Car Loan'),
+  ('2022-04-20', 'Business Loan'),
+  ('2022-05-10', 'Student Loan');
+
+
+# Q.  Write a query to find the date when the 'Personal Loan' is going to close given it's tenure to be 24 months. Use Date_ADD() function.
+
