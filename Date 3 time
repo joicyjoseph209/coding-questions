@@ -1,0 +1,25 @@
+#Data
+
+CREATE TABLE flight_table (
+  flight_id INT NOT NULL AUTO_INCREMENT,
+  flight_datetime DATETIME NOT NULL,
+  flight_name VARCHAR(50) NOT NULL,
+  PRIMARY KEY (flight_id)
+);
+
+INSERT INTO flight_table (flight_datetime, flight_name)
+VALUES 
+  ('2022-03-10 10:30:00', 'Flight A'),
+  ('2022-03-11 11:45:00', 'Flight B'),
+  ('2022-03-12 12:30:00', 'Flight C'),
+  ('2022-03-13 13:15:00', 'Flight D'),
+  ('2022-03-14 14:30:00', 'Flight E'),
+  ('2022-03-15 15:45:00', 'Flight F'),
+  ('2022-03-16 16:30:00', 'Flight G'),
+  ('2022-03-17 17:15:00', 'Flight H'),
+  ('2022-03-18 18:30:00', 'Flight I'),
+  ('2022-03-19 19:45:00', 'Flight J');
+
+Q. 1  Write a query to output all the flights which are scheduled for evening (3PM - 7PM is considered as evening).
+
+  
