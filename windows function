@@ -1,0 +1,32 @@
+CREATE TABLE social_media_stats (
+record_id INT NOT NULL,
+date DATE NOT NULL,
+social_network VARCHAR(20) NOT NULL,
+new_subscribers INT NOT NULL,
+PRIMARY KEY (record_id)
+);
+
+INSERT INTO social_media_stats (record_id, date, social_network, new_subscribers)
+VALUES
+(11, '2021-09-01', 'Instagram', 40),
+(12, '2021-09-01', 'Facebook', 12),
+(13, '2021-09-01', 'LinkedIn', 5),
+(14, '2021-09-02', 'Instagram', 67),
+(15, '2021-09-02', 'Facebook', 23),
+(16, '2021-09-02', 'LinkedIn', 2),
+(17, '2021-09-03', 'Instagram', 34),
+(18, '2021-09-03', 'Facebook', 25),
+(19, '2021-09-03', 'LinkedIn', 10),
+(20, '2021-09-04', 'Instagram', 85),
+(21, '2021-09-04', 'Facebook', 28),
+(22, '2021-09-04', 'LinkedIn', 20);
+
+
+# Q. Write a query to observe the number of running subscribers of ‘LinkedIn’ from the table on ‘2021-09-03’.
+
+select s.date, s.social_network, s.new_subscribers,               
+sum(new_subscribers) over (order by s.date rows between unbounded preceding and current row ) as LinkedIn_subs
+from social_media_stats as s
+where s.social_network = 'LinkedIn' and s.date <= '2021-09-03';
+
+
