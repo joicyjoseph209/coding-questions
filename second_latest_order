@@ -1,0 +1,26 @@
+CREATE TABLE sales3 (
+  order_id INT NOT NULL,
+  order_date DATE NOT NULL,
+  customer_name VARCHAR(50) NOT NULL,
+  product_name VARCHAR(50) NOT NULL,
+  quantity INT NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  PRIMARY KEY (order_id)
+);
+
+INSERT INTO sales3 (order_id, order_date, customer_name, product_name, quantity, price)
+VALUES
+  (1, '2022-03-01', 'John Doe', 'Product A', 5, 10.50),
+  (2, '2022-03-02', 'Jane Doe', 'Product B', 3, 12.00),
+  (3, '2022-03-03', 'John Smith', 'Product A', 2, 10.50),
+  (4, '2022-03-04', 'Jane Smith', 'Product C', 1, 15.75),
+  (5, '2022-03-05', 'John Doe', 'Product B', 4, 12.00),
+  (6, '2022-03-06', 'Jane Doe', 'Product A', 2, 10.50),
+  (7, '2022-03-07', 'John Smith', 'Product B', 3, 12.00),
+  (8, '2022-03-08', 'Jane Smith', 'Product C', 2, 15.75);
+
+# Q. What is the customer name of the second latest order placed in the sales table?
+select customer_name
+from sales3
+order by order_date desc
+limit 1 offset 1;
